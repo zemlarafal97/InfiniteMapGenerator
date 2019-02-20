@@ -14,7 +14,7 @@ public class MapGenerator {
     }
 
 
-    void initialize() {
+    void initializeMap() {
         Random generator = new Random();
         int rand = 0;
         int tmpPathWidth;
@@ -24,7 +24,6 @@ public class MapGenerator {
 
         //Set first map column
         rand = generator.nextInt(dimension);    //Get random value in range 0 to dimension
-        System.out.println(rand);
         tmpPathWidth = generator.nextInt(pathMaxWidth - pathMinWidth + 1) + pathMinWidth;
         map.setValueAtPosition(rand, 0, 1);
         upIndex = rand - 1;
@@ -99,12 +98,13 @@ public class MapGenerator {
 
         }
 
-        map.print();
-
-
     }
 
-    public int[] generateColumn() {
+    public Map getMap() {
+        return map;
+    }
+
+    private int[] generateColumn() {
         int column[] = new int[dimension];
         int upIndex = -1;
         int bottomIndex = -1;
@@ -167,14 +167,14 @@ public class MapGenerator {
     public void moveMapLeft() {
         int column[] = generateColumn();
 
-        for(int i=0; i<dimension; i++) {
-            for(int j=0; j<dimension-1; j++) {
-                map.setValueAtPosition(i,j,map.getAtPos(i,j+1));
+        for (int i = 0; i < dimension; i++) {
+            for (int j = 0; j < dimension - 1; j++) {
+                map.setValueAtPosition(i, j, map.getAtPos(i, j + 1));
             }
         }
 
-        for(int i=0; i<dimension; i++) {
-            map.setValueAtPosition(i,dimension-1,column[i]);
+        for (int i = 0; i < dimension; i++) {
+            map.setValueAtPosition(i, dimension - 1, column[i]);
         }
 
 

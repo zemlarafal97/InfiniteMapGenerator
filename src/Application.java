@@ -1,33 +1,14 @@
-import javax.swing.*;
-import java.awt.*;
+
 
 public class Application {
 
     public static void main(String[] args) {
 
+        MapDisplay mapDisplay = new MapDisplay("Infinite Runner Map Generator", 500, 500);
+        MapGenerator generator = new MapGenerator(10, 3, 5);
 
-
-        InfiniteRunnerMapGenerator infiniteRunnerMapGenerator = new InfiniteRunnerMapGenerator(500,500,"Infinite Runner Map Generator");
-        infiniteRunnerMapGenerator.start();
-
-
-
-
-
-        JFrame window = new JFrame("Infinite Runner Map Generator");
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setSize(new Dimension(400,400));
-        window.setVisible(true);
-        window.setResizable(false);
-
-
-
-
-        MapGenerator mapGenerator = new MapGenerator(10, 2, 4);
-        mapGenerator.initialize();
-
-
-
+        InfiniteRunner infiniteRunner = new InfiniteRunner(mapDisplay, generator);
+        infiniteRunner.start();
 
 
     }
