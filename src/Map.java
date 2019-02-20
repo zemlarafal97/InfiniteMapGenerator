@@ -8,9 +8,6 @@ public class Map {
 
     }
 
-    public int getDimension() {
-        return dimension;
-    }
 
     public int getAtPos(int row, int column) {
         return map[row][column];
