@@ -3,10 +3,16 @@ import java.awt.*;
 
 public class Application {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
 
-        Assets.initialize();
+
+        InfiniteRunnerMapGenerator infiniteRunnerMapGenerator = new InfiniteRunnerMapGenerator(500,500,"Infinite Runner Map Generator");
+        infiniteRunnerMapGenerator.start();
+
+
+
+
 
         JFrame window = new JFrame("Infinite Runner Map Generator");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -16,10 +22,10 @@ public class Application {
 
 
 
-        /*
-        MapGenerator mapGenerator = new MapGenerator(10, 3, 3);
+
+        MapGenerator mapGenerator = new MapGenerator(10, 2, 4);
         mapGenerator.initialize();
-        */
+
 
 
 
