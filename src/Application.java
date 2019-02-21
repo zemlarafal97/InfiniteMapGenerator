@@ -1,14 +1,22 @@
-
+import enums.OptionType;
 
 public class Application {
 
     public static void main(String[] args) {
 
-        MapDisplay mapDisplay = new MapDisplay("Infinite Runner Map Generator", 500, 500);
-        MapGenerator generator = new MapGenerator(10, 3, 5);
+        MapDisplay mapDisplay = new MapDisplay("Infinite Runner Map Generator", 15);
+
+        Options options = new Options();
+        options.add(new SingleOption(OptionType.RIVER,0.15));
+
+        MapGenerator generator = new MapGenerator(15, 5, 5,options);
 
         InfiniteRunner infiniteRunner = new InfiniteRunner(mapDisplay, generator);
-        infiniteRunner.start();
+        try {
+            infiniteRunner.start();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
     }

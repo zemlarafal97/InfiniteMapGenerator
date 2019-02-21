@@ -5,11 +5,13 @@ public class MapGenerator {
     private Map map;
     private int pathMinWidth;
     private int pathMaxWidth;
+    private Options options;
 
-    public MapGenerator(int dimension, int pathMinWidth, int pathMaxWidth) {
+    public MapGenerator(int dimension, int pathMinWidth, int pathMaxWidth, Options options) {
         this.dimension = dimension;
         this.pathMinWidth = pathMinWidth;
         this.pathMaxWidth = pathMaxWidth;
+        this.options = options;
         map = new Map(dimension);
     }
 
@@ -160,6 +162,25 @@ public class MapGenerator {
 
             tmpPathWidth--;
         }
+
+        //--------------------------------------------------------------
+
+        for (SingleOption o : options.getOptions()) {
+            double random = generator.nextDouble();
+
+            switch (o.getOptionType()) {
+                case RIVER:
+                    if (0.0 <= random && random <= o.getProbability()) {
+                        for (int i = 0; i < map.getDimension(); i++) {
+                            if(column[i] != 1) {
+                                column[i] = 3;
+                            }
+                        }
+                    }
+                    break;
+            }
+        }
+
 
         return column;
     }

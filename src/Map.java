@@ -30,5 +30,9 @@ public class Map {
 
     }
 
+    public int getDimension() {
+        return this.dimension;
+    }
+
 
 }

@@ -9,10 +9,10 @@ public class MapDisplay {
     private int height;
 
 
-    public MapDisplay(String title, int width, int height) {
+    public MapDisplay(String title,int dimension) {
         this.title = title;
-        this.width = width;
-        this.height = height;
+        this.width = 50*dimension;
+        this.height = 50*dimension;
         createDisplay();
     }
 
